@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kids Activity Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="app">
+        <!-- Login Screen -->
+        <div id="loginScreen" class="screen active">
+            <div class="login-container">
+                <h1>Kids Activity Tracker</h1>
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" required>
+                    </div>
+                    <button type="submit">Login</button>
+                </form>
+                <div id="loginError" class="error-message"></div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard -->
+        <div id="dashboardScreen" class="screen">
+            <header>
+                <h1>Activity Tracker</h1>
+                <div class="user-info">
+                    <span id="currentUser"></span>
+                    <button id="logoutBtn">Logout</button>
+                </div>
+            </header>
+
+            <main>
+                <!-- Quick Log Section -->
+                <section class="quick-log">
+                    <h2>Log Activity</h2>
+                    <div class="activity-grid">
+                        <button class="activity-btn" data-activity="reading">
+                            📚 Reading
+                        </button>
+                        <button class="activity-btn" data-activity="videogames">
+                            🎮 Video Games
+                        </button>
+                        <button class="activity-btn" data-activity="tv">
+                            📺 TV
+                        </button>
+                        <button class="activity-btn" data-activity="socialmedia">
+                            📱 Social Media
+                        </button>
+                        <button class="activity-btn" data-activity="study">
+                            📖 Study
+                        </button>
+                        <button class="activity-btn" data-activity="music">
+                            🎵 Music Lessons
+                        </button>
+                        <button class="activity-btn" data-activity="physical">
+                            🏃 Physical Activity
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Active Session -->
+                <section id="activeSession" class="active-session hidden">
+                    <h3>Currently logging: <span id="currentActivity"></span></h3>
+                    <div class="timer">
+                        <span id="sessionTimer">00:00:00</span>
+                    </div>
+                    <button id="stopSession" class="stop-btn">Stop Session</button>
+                </section>
+
+                <!-- Today's Summary -->
+                <section class="summary">
+                    <h2>Today's Activities</h2>
+                    <div id="todaySummary" class="summary-grid"></div>
+                </section>
+
+                <!-- Weekly Report -->
+                <section class="report">
+                    <h2>This Week</h2>
+                    <div id="weeklyReport" class="report-content"></div>
+                    <button id="exportBtn">Export Data</button>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Timer Modal -->
+    <div id="timerModal" class="modal hidden">
+        <div class="modal-content">
+            <h3>Enter time spent on <span id="modalActivity"></span></h3>
+            <div class="time-input">
+                <input type="number" id="hours" min="0" max="23" placeholder="Hours">
+                <span>:</span>
+                <input type="number" id="minutes" min="0" max="59" placeholder="Minutes">
+            </div>
+            <div class="modal-buttons">
+                <button id="saveTime">Save</button>
+                <button id="cancelTime">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
